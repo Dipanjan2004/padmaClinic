@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Version | 0.4 (draft, awaiting review). Since 0.3: West Bengal, English and Bengali, website first (D-018 to D-020). Since 0.2: phone-first for everyone (D-012). Since 0.1: booking model (D-011). |
+| Version | 0.5 (draft, awaiting review). Since 0.4: real owner, phone, map and doctors (D-023). Since 0.3: West Bengal, English and Bengali, website first (D-018 to D-020). Since 0.2: phone-first for everyone (D-012). Since 0.1: booking model (D-011). |
 | Date | 2026-11-01 |
 | Sources | `Docs/idea.md` (owner's brief) and `Docs/DECISIONS.md` |
 
@@ -358,17 +358,21 @@ All of this is stored in the database and edited from the admin screens. Nothing
 | Item | Value |
 |---|---|
 | Clinic display name | Padma Clinic (confirmed) |
+| Owner | Nabadwip Kumar Chowdhury (D-023) |
+| Email | naba.medi@gmail.com (D-031) |
+| Lab tests | The clinic offers all kinds of lab tests with Thyrocare as its partner lab (D-032). [TBD: prices, report times, whether samples are collected at the clinic or at home, and whether the clinic may show the Thyrocare name] |
+| Doctors (current) | Dr. Amit Sengupta, MBBS. Dr. Dipanwita Chowdhury, MBBS, has worked at Lady Dufferin Hospital (D-023, D-030). [TBD: confirm the hospital's full name; speciality, registration number, photo, timings and fees for each] |
 | Clinic name in Bengali script | [TBD: exact Bengali spelling, for example পদ্ম or পদ্মা] |
 | Town or locality (West Bengal) | [TBD: clinic locality] |
 | Legal or registered name | [TBD: legal name] |
 | Clinic registration number (if required) | [TBD: registration number] |
-| Address | [TBD: full address] |
-| Phone | [TBD: phone number] |
-| WhatsApp | [TBD: WhatsApp number] |
+| Address | [TBD: full address]. The map location is known (D-023). |
+| Phone | +91 98303 37825 (D-023) |
+| WhatsApp | Assumed +91 98303 37825. [TBD: confirm] |
 | Email | [TBD: email address, optional] |
-| Google Maps location | [TBD: Google Maps place link] |
+| Google Maps location | https://maps.app.goo.gl/5wByP6h2ZpFjhJpN6 (pin labelled "Jatindra Mohan Medico") |
 | Opening hours | [TBD: opening hours] |
-| Logo and brand colours | [TBD: logo file and colours] |
+| Logo and brand colours | [TBD: logo file]. Interim: blue `#2463A6` and lime, see DESIGN.md v0.2 |
 | About, history, mission and values | [TBD: written by the clinic] |
 | Services and facilities | [TBD: list of services the clinic actually provides] |
 | Chamber names | [TBD: how the chambers are referred to] |
