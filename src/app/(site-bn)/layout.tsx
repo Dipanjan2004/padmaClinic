@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import { siteUrl } from "@/lib/site-url";
 import "../globals.css";
 import { bodyBengali, displayBengali, geist } from "../fonts";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.APP_BASE_URL ?? "http://localhost:3000"),
+  metadataBase: siteUrl,
 };
 
 export const viewport: Viewport = { themeColor: "#ffffff", viewportFit: "cover" };

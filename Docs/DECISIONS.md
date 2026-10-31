@@ -271,3 +271,11 @@ Status key:
 - **What the user said:** don't make so many commits; 15 was too many.
 - Group the work by feature or area, usually 3 to 5 commits per batch. Still never one big commit, and never one commit per file, component or section.
 - The other rules in D-037 stand: commit only when asked, keep messages under 10 words, and never mention Claude or AI.
+
+### D-039: Deploy the website on Vercel from GitHub
+- 2026-11-01 · Source: user ("deploy it in Vercel") · ✅ Decided. 🟡 The setup details are Claude's.
+- Vercel imports the GitHub repository `Dipanjan2004/padmaClinic`. `main` is the production branch: every push or merged PR to `main` redeploys the site, and other branches get preview links.
+- 🟡 `vercel.json` pins server code to Mumbai (`bom1`), as in D-016. The pages themselves are static and are served from Vercel's CDN.
+- 🟡 The site's public address, used for canonical and language links, comes from `APP_BASE_URL` when it is set. Otherwise it uses Vercel's production address automatically (`src/lib/site-url.ts`). This replaces a fallback to localhost that would have told Google the page lived on localhost.
+- Still open from D-010: Vercel's free Hobby plan is for non-commercial use only, so the clinic's live site belongs on Pro (about US$20 a month). Upgrade before announcing the site or adding the clinic's domain.
+- Before the link is shared with patients, confirm that the WhatsApp number is 98303 37825 (D-023), because every booking request goes there.
