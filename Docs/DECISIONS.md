@@ -259,9 +259,15 @@ Status key:
 - The mobile checklist in `DESIGN.md` §11 is now the standard for every screen.
 
 ### D-037: How commits are made
-- 2026-11-01 · Source: user · ✅ Decided
+- 2026-11-01 · Source: user · ✅ Decided. 🔁 Commit size superseded by D-038.
 - Commit only when the user asks, and never push unless asked.
 - Commit in parts, never as a whole. Each commit is one logical piece with its own files, ordered so each builds on the ones before it.
 - Every commit message is under 10 words: one short imperative line, with no body.
 - Commits never mention Claude or AI: no `Co-Authored-By` line and no "Generated with" footer.
 - `CLAUDE.md` stays out of git; the owner added it to `.gitignore`. These rules are also written in `CLAUDE.md` under *Git and commits*.
+
+### D-038: Fewer, larger commits
+- 2026-11-01 · Source: user · ✅ Decided. Supersedes the commit size in D-037.
+- **What the user said:** don't make so many commits; 15 was too many.
+- Group the work by feature or area, usually 3 to 5 commits per batch. Still never one big commit, and never one commit per file, component or section.
+- The other rules in D-037 stand: commit only when asked, keep messages under 10 words, and never mention Claude or AI.
