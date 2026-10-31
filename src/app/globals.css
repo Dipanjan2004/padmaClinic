@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+/* Design tokens. See Docs/DESIGN.md §4. White theme (D-024). */
+@theme {
+  /* White page, clinic blue brand, lime accent (D-025). */
+  --color-paper: #ffffff;
+  --color-surface: #ffffff;
+  --color-mist: #f3f6fa;
+  --color-ink: #0f1b2d;
+  --color-ink-muted: #526070;
+  --color-line: #e2e8f0;
+  --color-brand: #2463a6;
+  --color-brand-strong: #1b4f87;
+  --color-brand-soft: #e6eef8;
+  --color-navy: #0e2240;
+  --color-lime: #d4f26a;
+  --color-ok: #1f7a4d;
+  --color-ok-soft: #e3f3ea;
+  --color-sun: #9a5b00;
+  --color-sun-soft: #fbefd9;
+
+  --shadow-panel: 0 1px 2px rgb(15 27 45 / 0.06), 0 24px 48px -24px rgb(15 27 45 / 0.35);
+  --shadow-bar: 0 -10px 28px -18px rgb(15 27 45 / 0.35);
+  --shadow-nav: 0 1px 2px rgb(15 27 45 / 0.06), 0 12px 32px -18px rgb(15 27 45 / 0.35);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  /* Geist for Latin; Bengali glyphs fall through to the Bengali faces. */
+  --font-display: var(--font-geist), var(--font-anek), "Noto Sans Bengali", system-ui, sans-serif;
+  --font-sans: var(--font-geist), var(--font-hind), "Noto Sans Bengali", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* The phone menu is a modal dialog; stop the page scrolling behind it. */
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  /* Bengali vowel signs need more vertical room than Latin. */
+  :lang(bn) h1,
+  :lang(bn) h2,
+  :lang(bn) h3 {
+    line-height: 1.3;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-brand-soft);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+}
+
+/* Motion. See Docs/DESIGN.md §7. Every effect has a reduced-motion fallback below. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0.35;
+    transform: translateY(6px);
+  }
+}
+
+@keyframes reveal {
+  from {
+    clip-path: inset(12% 6% 12% 6% round 1.5rem);
+    opacity: 0.4;
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 1.5rem);
+    opacity: 1;
+  }
+}
+
+@keyframes zoom-settle {
+  from {
+    transform: scale(1.14);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ping-soft {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  80%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.hero-rise {
+  animation: rise 700ms var(--ease-out-expo) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.list-settle {
+  animation: settle 240ms var(--ease-out-expo) both;
+}
+
+/* The hero's authored moment: the photo opens out and settles. */
+.hero-reveal {
+  animation: reveal 1100ms var(--ease-out-expo) both;
+}
+
+.hero-zoom {
+  animation: zoom-settle 1800ms var(--ease-out-expo) both;
+}
+
+/* The round "Book" badge: its ring of text turns slowly. */
+.badge-spin {
+  animation: spin-slow 14s linear infinite;
+}
+
+.live-dot {
+  position: relative;
+}
+
+.live-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: currentColor;
+  animation: ping-soft 2s var(--ease-out-expo) infinite;
+}
+
+.press {
+  transition:
+    transform 120ms var(--ease-out-expo),
+    background-color 150ms ease-out,
+    border-color 150ms ease-out,
+    color 150ms ease-out;
+}
+
+.press:active {
+  transform: scale(0.97);
+}
+
+/* Phone menu: drops down from the top behind the navbar, which stays put; links rise in one after another. */
+.menu-panel {
+  translate: 0 -100%;
+  visibility: hidden;
+  transition:
+    translate 300ms var(--ease-out-expo),
+    visibility 0s linear 300ms;
+}
+
+.menu-panel[data-open="true"] {
+  translate: 0 0;
+  visibility: visible;
+  transition:
+    translate 520ms var(--ease-out-expo),
+    visibility 0s;
+}
+
+.menu-panel[data-open="true"] .menu-item {
+  animation: rise 420ms var(--ease-out-expo) both;
+  animation-delay: calc(var(--i, 0) * 45ms + 140ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-rise,
+  .list-settle,
+  .hero-reveal,
+  .hero-zoom,
+  .menu-panel[data-open="true"] .menu-item {
+    animation: none;
+  }
+
+  .menu-panel,
+  .menu-panel[data-open="true"] {
+    transition: none;
+  }
+
+  .live-dot::after {
+    display: none;
+  }
+
+  .badge-spin {
+    animation: none;
+  }
+
+  .press:active {
+    transform: none;
+  }
+}
