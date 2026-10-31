@@ -279,3 +279,18 @@ Status key:
 - 🟡 The site's public address, used for canonical and language links, comes from `APP_BASE_URL` when it is set. Otherwise it uses Vercel's production address automatically (`src/lib/site-url.ts`). This replaces a fallback to localhost that would have told Google the page lived on localhost.
 - Still open from D-010: Vercel's free Hobby plan is for non-commercial use only, so the clinic's live site belongs on Pro (about US$20 a month). Upgrade before announcing the site or adding the clinic's domain.
 - Before the link is shared with patients, confirm that the WhatsApp number is 98303 37825 (D-023), because every booking request goes there.
+
+### D-040: The clinic's domain is padmaclinic.in
+- 2026-11-01 · Source: user · ✅ Decided. 🟡 The DNS setup is Claude's default.
+- The user registered **padmaclinic.in** at Hostinger.
+- 🟡 DNS stays at Hostinger, so a Hostinger email can be added later without moving anything. Two records point the domain at Vercel:
+  - an A record for `@`;
+  - a CNAME record for `www`.
+  - Use the exact values Vercel shows under Settings → Domains.
+- 🟡 `padmaclinic.in` is the main address, and `www.padmaclinic.in` redirects to it.
+- Once the domain is added in Vercel, the next deploy uses it automatically for canonical and language links (`VERCEL_PROJECT_PRODUCTION_URL`, D-039). `APP_BASE_URL` is not needed.
+- Connecting the clinic's own domain means the site is live, so the Vercel plan should be Pro (D-010).
+
+### D-041: No new branches unless asked
+- 2026-11-01 · Source: user · ✅ Decided
+- Commit on the current branch (`main`). Create a branch only when the user asks for one.

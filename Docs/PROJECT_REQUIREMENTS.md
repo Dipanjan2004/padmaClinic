@@ -346,7 +346,7 @@ These are in priority order. Claude asks them one at a time.
 | Q-12 | Does the clinic ever give partial payments, discounts or free consultations (camps, staff, hardship)? | Payment rules | Schema |
 | Q-13 | Who records medical history such as allergies and chronic conditions: reception, doctors or both? | Permissions | Roles |
 | Q-14 | Does the chemist shop already use billing software? If so, which? | Future pharmacy integration | Later |
-| Q-15 | Does the clinic already own a domain name? | Deployment, SEO | Phase 7 |
+| Q-15 | ~~Does the clinic already own a domain name?~~ Answered: padmaclinic.in (D-040) | Deployment, SEO | Phase 7 |
 | Q-16 | How long must records be kept? This needs input from the legal check in §8. | The retention policy | Before go-live |
 | Q-17 | Are the reception and pharmacy printers USB (printing only from that computer) or Wi-Fi (phones can print too)? | Phone printing | Phase 4 |
 | Q-18 | Do staff use their own phones or clinic-owned phones? | Device and privacy policy | Roles |
@@ -380,4 +380,4 @@ All of this is stored in the database and edited from the admin screens. Nothing
 | Payment methods besides Cash and UPI | [TBD: e.g. card] |
 | UPI ID or QR code shown at reception or on receipts | [TBD: optional] |
 | Jatindra Mohan Medico details to show on prescriptions, if any | [TBD: optional] |
-| Domain name | [TBD: domain] |
+| Domain name | padmaclinic.in, registered at Hostinger and served by Vercel (D-040) |

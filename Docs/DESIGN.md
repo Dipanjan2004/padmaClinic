@@ -37,7 +37,7 @@ Claude reads this before touching any screen.
 
 | Token | Hex | Use |
 |---|---|---|
-| `paper` / `surface` | `#FFFFFF` | Page and cards |
+| `surface` | `#FFFFFF` | Page and cards |
 | `mist` | `#F3F6FA` | Subtle fills |
 | `ink` | `#0F1B2D` | Text |
 | `ink-muted` | `#526070` | Secondary text |
