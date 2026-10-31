@@ -257,3 +257,11 @@ Status key:
     - the whole Contact row is tappable for phone, WhatsApp and email;
     - the logo link is 44px.
 - The mobile checklist in `DESIGN.md` §11 is now the standard for every screen.
+
+### D-037: How commits are made
+- 2026-11-01 · Source: user · ✅ Decided
+- Commit only when the user asks, and never push unless asked.
+- Commit in parts, never as a whole. Each commit is one logical piece with its own files, ordered so each builds on the ones before it.
+- Every commit message is under 10 words: one short imperative line, with no body.
+- Commits never mention Claude or AI: no `Co-Authored-By` line and no "Generated with" footer.
+- `CLAUDE.md` stays out of git; the owner added it to `.gitignore`. These rules are also written in `CLAUDE.md` under *Git and commits*.
