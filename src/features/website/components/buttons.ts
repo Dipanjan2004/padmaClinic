@@ -5,6 +5,4 @@ const base =
 
 export const buttonPrimary = `${base} h-12 bg-brand px-6 text-white hover:bg-brand-strong`;
 
-export const buttonPrimarySmall = `${base} h-10 bg-brand px-5 text-sm text-white hover:bg-brand-strong`;
-
 export const buttonSecondary = `${base} h-12 border border-line bg-surface px-5 text-ink hover:border-ink/30`;

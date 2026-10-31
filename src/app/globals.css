@@ -3,7 +3,6 @@
 /* Design tokens. See Docs/DESIGN.md §4. White theme (D-024). */
 @theme {
   /* White page, clinic blue brand, lime accent (D-025). */
-  --color-paper: #ffffff;
   --color-surface: #ffffff;
   --color-mist: #f3f6fa;
   --color-ink: #0f1b2d;
@@ -34,16 +33,11 @@
 
 @layer base {
   html {
-    background: var(--color-paper);
+    background: var(--color-surface);
     color: var(--color-ink);
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
     -webkit-tap-highlight-color: transparent;
-  }
-
-  /* The phone menu is a modal dialog; stop the page scrolling behind it. */
-  html:has(dialog[open]) {
-    overflow: hidden;
   }
 
   body {
@@ -99,17 +93,6 @@
   }
 }
 
-@keyframes reveal {
-  from {
-    clip-path: inset(12% 6% 12% 6% round 1.5rem);
-    opacity: 0.4;
-  }
-  to {
-    clip-path: inset(0 0 0 0 round 1.5rem);
-    opacity: 1;
-  }
-}
-
 @keyframes zoom-settle {
   from {
     transform: scale(1.14);
@@ -143,11 +126,7 @@
   animation: settle 240ms var(--ease-out-expo) both;
 }
 
-/* The hero's authored moment: the photo opens out and settles. */
-.hero-reveal {
-  animation: reveal 1100ms var(--ease-out-expo) both;
-}
-
+/* The hero's authored moment: the photo settles from a slight zoom. */
 .hero-zoom {
   animation: zoom-settle 1800ms var(--ease-out-expo) both;
 }
@@ -211,7 +190,6 @@
 
   .hero-rise,
   .list-settle,
-  .hero-reveal,
   .hero-zoom,
   .menu-panel[data-open="true"] .menu-item {
     animation: none;

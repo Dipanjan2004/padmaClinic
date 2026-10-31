@@ -10,37 +10,23 @@ export function initials(name: string): string {
     .join("");
 }
 
-const SIZES = {
-  sm: { box: "h-10 w-10 text-sm", px: 40 },
-  lg: { box: "h-16 w-16 text-xl", px: 64 },
-};
-
 /** A doctor's photo, or their initials until a photo is uploaded. */
-export function Avatar({
-  name,
-  photoUrl,
-  size = "sm",
-}: {
-  name: string;
-  photoUrl: string | null;
-  size?: keyof typeof SIZES;
-}) {
-  const { box, px } = SIZES[size];
+export function Avatar({ name, photoUrl }: { name: string; photoUrl: string | null }) {
   if (photoUrl) {
     return (
       <Image
         src={photoUrl}
         alt=""
-        width={px}
-        height={px}
-        className={`${box} shrink-0 rounded-full object-cover`}
+        width={40}
+        height={40}
+        className="h-10 w-10 shrink-0 rounded-full object-cover"
       />
     );
   }
   return (
     <span
       aria-hidden="true"
-      className={`${box} grid shrink-0 place-items-center rounded-full bg-brand-soft font-display font-semibold text-brand`}
+      className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-soft font-display text-sm font-semibold text-brand"
     >
       {initials(name)}
     </span>

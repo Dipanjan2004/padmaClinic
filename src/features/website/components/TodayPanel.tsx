@@ -17,7 +17,7 @@ function statusAt(now: ClinicNow, start: string, end: string): Status {
 const STATUS_STYLE: Record<Status, string> = {
   live: "bg-ok-soft text-ok",
   later: "bg-sun-soft text-sun",
-  done: "bg-paper text-ink-muted",
+  done: "bg-mist text-ink-muted",
 };
 
 /** "Who is in today", worked out in the browser from the clinic's clock. */

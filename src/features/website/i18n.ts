@@ -3,7 +3,7 @@ import type { ClinicInfo, Localized } from "@/features/website-content/types";
 
 export type Lang = "en" | "bn";
 
-export type BookingRequest = { clinic: string; doctor: string; date: string; name: string; phone: string };
+type BookingRequest = { clinic: string; doctor: string; date: string; name: string; phone: string };
 
 const en = {
   meta: { title: "Doctors and appointments" },
@@ -29,7 +29,6 @@ const en = {
   hero: {
     title: { start: "Book your doctor's", highlight: "appointment", end: "" },
     tagline: "Choose a doctor and a day. Reception confirms your serial.",
-    orCall: "Prefer to call?",
     badge: "Book your serial",
     meetDoctors: "Meet our doctors",
   },
@@ -76,7 +75,6 @@ const en = {
     title: "When doctors are in",
     note: "Times are approximate. Reception confirms your serial.",
     tabs: "Days of the week",
-    today: "Today",
     empty: "No doctor visits on this day.",
     until: (time: string) => `till ${time}`,
     bookWith: (name: string) => `Book with ${name}`,
@@ -131,7 +129,6 @@ const en = {
     owner: "Owner",
     address: "Address",
     hours: "Clinic hours",
-    location: "Location",
     mapTitle: (name: string) => `${name} on Google Maps`,
   },
   footer: {
@@ -144,7 +141,7 @@ const en = {
   whatsappMessage: "Hello, I'd like to book an appointment.",
 };
 
-export type Dictionary = typeof en;
+type Dictionary = typeof en;
 
 const bn: Dictionary = {
   meta: { title: "ডাক্তার ও সিরিয়াল" },
@@ -170,7 +167,6 @@ const bn: Dictionary = {
   hero: {
     title: { start: "ডাক্তারবাবুর", highlight: "সিরিয়াল", end: "বুক করুন" },
     tagline: "ডাক্তার আর দিন বেছে নিন। রিসেপশন সিরিয়াল নিশ্চিত করবে।",
-    orCall: "ফোনে বুক করতে চান?",
     badge: "সিরিয়াল বুক করুন",
     meetDoctors: "আমাদের ডাক্তারবাবুরা",
   },
@@ -217,7 +213,6 @@ const bn: Dictionary = {
     title: "কে কবে বসেন",
     note: "সময় আনুমানিক। সিরিয়াল রিসেপশন থেকে নিশ্চিত করা হয়।",
     tabs: "সপ্তাহের দিন",
-    today: "আজ",
     empty: "এই দিনে কোনো ডাক্তারবাবু বসেন না।",
     until: (time: string) => `${time} পর্যন্ত`,
     bookWith: (name: string) => `${name}-এর সিরিয়াল বুক করুন`,
@@ -272,7 +267,6 @@ const bn: Dictionary = {
     owner: "স্বত্বাধিকারী",
     address: "ঠিকানা",
     hours: "ক্লিনিক খোলা থাকে",
-    location: "লোকেশন",
     mapTitle: (name: string) => `গুগল ম্যাপে ${name}`,
   },
   footer: {
@@ -295,8 +289,8 @@ export function pick(lang: Lang, text: Localized): string {
 
 // ---- Paths and outbound links ----
 
-export function homePath(lang: Lang, hash = ""): string {
-  return (lang === "bn" ? "/bn" : "/") + hash;
+export function homePath(lang: Lang): string {
+  return lang === "bn" ? "/bn" : "/";
 }
 
 /**

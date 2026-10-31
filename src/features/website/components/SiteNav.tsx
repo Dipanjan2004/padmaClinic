@@ -9,6 +9,7 @@ import { ClinicMark } from "./ClinicMark";
 import { LanguageSwitch } from "./LanguageSwitch";
 
 export type NavLink = { id: string; label: string };
+type NavDoctor = { slug: string; name: string; nameEn: string; photoUrl: string | null };
 
 /** Makes everything except `keep` inert and stops the page scrolling. Returns the undo. */
 function lockPageBehind(keep: HTMLElement): () => void {
@@ -24,7 +25,6 @@ function lockPageBehind(keep: HTMLElement): () => void {
     root.style.overflow = overflow;
   };
 }
-export type NavDoctor = { slug: string; name: string; nameEn: string; photoUrl: string | null };
 
 // Icon-over-label tiles for the menu's quick actions, on the blue panel.
 const tile =
@@ -162,7 +162,7 @@ export function SiteNav(props: Props) {
   return (
     <header ref={headerRef} className="fixed inset-x-0 top-0 z-40 px-3 pt-3 md:px-4 md:pt-4">
       <div
-        className={`relative mx-auto flex h-16 max-w-6xl items-center gap-1.5 rounded-2xl px-2 transition- min-[400px]:gap-2 min-[400px]:px-3[background-color,box-shadow,color] duration-300 md:h-[4.5rem] md:px-5 ${
+        className={`relative mx-auto flex h-16 max-w-6xl items-center gap-1.5 rounded-2xl px-2 transition-[background-color,box-shadow,color] duration-300 min-[400px]:gap-2 min-[400px]:px-3 md:h-[4.5rem] md:px-5 ${
           onHero ? "text-white" : "bg-surface/95 text-ink shadow-nav backdrop-saturate-150"
         }`}
       >

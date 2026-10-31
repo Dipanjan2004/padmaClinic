@@ -80,8 +80,8 @@ export function WeekTimetable({ lang, doctors }: { lang: Lang; doctors: PublicDo
                   selected
                     ? "text-white"
                     : busyDays.has(weekday)
-                      ? "text-ink hover:bg-paper"
-                      : "text-ink-muted/70 hover:bg-paper"
+                      ? "text-ink hover:bg-mist"
+                      : "text-ink-muted/70 hover:bg-mist"
                 }`}
               >
                 {dayShort(lang, weekday)}
