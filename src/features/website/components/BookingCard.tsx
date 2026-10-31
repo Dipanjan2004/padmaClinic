@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, MessageCircle, Pencil } from "lucide-react";
+import { CalendarDays, Check, MessageCircle, Pencil } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { addDays, useClinicNow } from "@/lib/clinic-time";
 import { dictionary, formatPhone, whatsappLink, type Lang } from "../i18n";
@@ -219,18 +219,37 @@ export function BookingCard({ lang, clinicName, doctors, whatsapp }: Props) {
                   {chip.label}
                 </button>
               ))}
-              <input
-                id="book-date"
-                name="date"
-                type="date"
-                data-field="date"
-                value={date}
-                min={today ?? undefined}
-                onChange={(e) => setDate(e.target.value)}
-                aria-invalid={Boolean(errors.date)}
-                aria-describedby={describedBy("date")}
-                className={`${fieldStyle} col-span-2 min-w-0 xl:col-span-1 ${errors.date ? "border-[#b42318]" : "border-line"}`}
-              />
+              {/* iPhone Safari gives date fields a minimum width of their own and shows nothing while
+                  empty, so: no native styling, a full-width block, left-aligned text, and our own hint
+                  and calendar icon. The native picker button covers the whole field, so a tap anywhere opens it. */}
+              <div className="relative col-span-2 min-w-0 xl:col-span-1">
+                <input
+                  id="book-date"
+                  name="date"
+                  type="date"
+                  data-field="date"
+                  value={date}
+                  min={today ?? undefined}
+                  onChange={(e) => setDate(e.target.value)}
+                  aria-invalid={Boolean(errors.date)}
+                  aria-describedby={describedBy("date")}
+                  className={`${fieldStyle} peer relative block min-w-0 appearance-none pr-11 text-left leading-[2.875rem] [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:h-auto [&::-webkit-calendar-picker-indicator]:w-auto [&::-webkit-calendar-picker-indicator]:cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-date-and-time-value]:text-left ${
+                    date ? "" : "[&:not(:focus)::-webkit-datetime-edit]:opacity-0"
+                  } ${errors.date ? "border-[#b42318]" : "border-line"}`}
+                />
+                {!date && (
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-y-0 left-3.5 flex items-center text-[1.0625rem] text-ink-muted/70 peer-focus:hidden"
+                  >
+                    {t.pickDate}
+                  </span>
+                )}
+                <CalendarDays
+                  aria-hidden="true"
+                  className="pointer-events-none absolute top-1/2 right-3.5 h-5 w-5 -translate-y-1/2 text-brand"
+                />
+              </div>
             </div>
             {errorText("date")}
           </div>
