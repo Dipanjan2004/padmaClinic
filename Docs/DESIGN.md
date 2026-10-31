@@ -2,110 +2,149 @@
 
 | | |
 |---|---|
-| Version | 0.1 (draft, awaiting review) |
+| Version | 0.2 (awaiting review). Replaces the v0.1 lotus direction. |
 | Date | 2026-11-01 |
-| Decisions | D-012 (phone first), D-019 (West Bengal), D-020 (English and Bengali), D-021 (direction) |
-| Method | Impeccable skill: mode, direction, craft floor |
+| Decisions | D-012 (phone first), D-019 (West Bengal), D-020 (English and Bengali), D-024 (white, nav, footer), D-025 (visual direction), D-026 (booking card), D-027 (footer colour), D-028 (phone menu), D-029 (contact, favicon), D-030 (doctor cards) |
+| References | bondapp.io (navbar, plain-spoken hero), the "SmileLab" dental hero the user shared (inset colour panel, oversized type, rotating badge) |
+| Method | Impeccable skill; research on doctor-booking pages (§9) |
 
 Claude reads this before touching any screen.
 
 ## 1. Who and where
 
-- **Patients and their families** in [TBD: clinic locality], West Bengal. Often a son or daughter books for a parent.
-- **Mid-range Android phones on 4G**, often outdoors in daylight, sometimes on a slow connection. Many people read Bengali more comfortably than English, and most know WhatsApp better than websites.
-- What they want, in this order:
-  1. Is my doctor in today, or on which day, and at what time?
-  2. How do I get a serial?
-  3. Where is the clinic, and how do I call?
+- **Patients and their families** around the clinic in West Bengal, mostly on mid-range Android phones over 4G. Often a son or daughter books for a parent.
+- They come to the site to **book a doctor**. Second, they want to call or find the clinic.
 
-## 2. Mode and primary action
+## 2. What the page must do
 
-- **Website:** Impeccable's Persuade mode, but in service of a task. The **primary action is "Book a serial" (সিরিয়াল বুক করুন)**. The secondary actions are Call and WhatsApp.
-- **Internal app (later):** Operate mode, with precision and calm. The same tokens, and quieter motion.
-- Every page answers its main question within the first phone screen.
+- Say within one second that **this is where you book a doctor at Padma Clinic**.
+- Let people book in the fewest steps: doctor, day, name, mobile, send (D-026).
+- Keep Call, WhatsApp and Directions one tap away on every screen.
 
 ## 3. Principles
 
-1. **To the point.** One idea per section: a heading and one line, not paragraphs. Cut copy in half, then cut again.
-2. **Local, not generic.** Bengali is a first-class language, with its own typeface, Bengali digits and local time words. Wording follows how people actually speak: সিরিয়াল, ডাক্তারবাবু, বসেন.
-3. **Minimal surface, lively details.** The layout stays quiet. Motion lives in a few deliberate places (§7).
-4. **Thumb first.** The main actions are always within reach. A sticky action bar sits at the bottom on phones.
-5. **Honest.** No invented facts or claims. Times are always shown as approximate (D-011).
+1. **Purpose first.** The headline names the job ("Book your doctor's appointment"), and the booking card is the hero visual.
+2. **Modern, not template.** Oversized light type, one bold colour panel, one accent, real controls. No stock icon-card grids.
+3. **Local.** Bengali is first-class, and the wording is how people speak: সিরিয়াল, ডাক্তারবাবু.
+4. **Honest.** No invented stats, reviews, credentials or timings. Missing details are hidden, not faked (D-023).
+5. **Thumb first.** A floating nav, a sticky bottom bar on phones, touch targets of at least 44px.
 
 ## 4. Visual identity
 
-This is a default until the clinic supplies its logo and colours.
-
-- **Motif:** the lotus (পদ্ম, *Padma*). There is one line-drawn lotus in the hero, which draws itself on load, and a small lotus mark as a stand-in logo. There is no other ornament.
-- **Theme:** light only for the public site. That was chosen from the setting, phones used in daylight, not because clinics are usually light.
+- **Theme:** a white page. The hero and the footer are matching inset rounded panels in clinic blue, so the page opens and closes in one colour (D-027). The "How booking works" band is a photo under a dark navy overlay.
+- **Logo and favicon:** a white medical plus in a clinic-blue rounded square, a stand-in until the clinic supplies a logo. The tab icon is `src/app/icon.svg`; the iPhone home-screen icon is `src/app/apple-icon.png` (180px, square, because iOS rounds the corners itself).
 - **Palette:**
 
 | Token | Hex | Use |
 |---|---|---|
-| `paper` | `#FBF8F3` | Page background (warm off-white) |
-| `surface` | `#FFFFFF` | Raised panels |
-| `ink` | `#1D1A17` | Text |
-| `ink-muted` | `#5C544D` | Secondary text (7:1 on paper) |
-| `line` | `#E7DFD4` | Dividers and borders |
-| `leaf` | `#1E5B45` | **Primary actions**, links, "in now" (lotus-leaf green, 8:1 with white) |
-| `leaf-soft` | `#E3EFE8` | Selected and success backgrounds |
-| `lotus` | `#B83F72` | Brand accent: the lotus, highlights (5:1 on white) |
-| `lotus-soft` | `#F9E8EF` | Avatar backgrounds, the sample banner |
-| `sun` / `sun-soft` | `#9A5B00` / `#FBEFD9` | "Starts later" and warning states |
+| `paper` / `surface` | `#FFFFFF` | Page and cards |
+| `mist` | `#F3F6FA` | Subtle fills |
+| `ink` | `#0F1B2D` | Text |
+| `ink-muted` | `#526070` | Secondary text |
+| `line` | `#E2E8F0` | Borders |
+| `brand` | `#2463A6` | Hero and footer panels, primary buttons, links (6.2:1 with white). Secondary text on it is white at 80% or more (4.6:1); lower opacities fail contrast. |
+| `brand-strong` / `brand-soft` | `#1B4F87` / `#E6EEF8` | Hover, selected fills, avatars |
+| `lime` | `#D4F26A` | The accent: the highlighted headline word, the badge, arrow circles. Use sparingly. |
+| `navy` | `#0E2240` | The booking band overlay |
+| `ok` / `ok-soft` | `#1F7A4D` / `#E3F3EA` | "In now" status |
+| `sun` / `sun-soft` | `#9A5B00` / `#FBEFD9` | "Later" status |
 
-The usual healthcare blue was avoided on purpose. Green and pink come from the lotus and its leaf, which ties the colours to the clinic's name.
+- **Photos:** free Unsplash and Pexels photos, toned to fit the palette. **People in photos must be Indian, so local patients can relate** (D-033). Avoid photos where a doctor's face is the subject, and crop out any other clinic's name or branding. Replace them with the clinic's own photos when possible.
+
+| File | Unsplash photo | Where it is used |
+|---|---|---|
+| `src/assets/images/clinic-hero.jpg` | njrDE70M2VI: stethoscope and BP gauge | Behind the hero, blue luminosity blend |
+| `src/assets/images/lab-tubes.jpg` | Pexels 6622519 (Charlie-Helen Robinson): barcoded sample tubes in a rack | Full body checkup tile in Lab tests, blue luminosity blend (D-034) |
+| `src/assets/images/clinic-consult.jpg` | Pexels 18870282 (World Sikh Organization): an Indian doctor examining an elderly Sikh patient with a stethoscope, cropped to remove another clinic's poster | Background of "How booking works" (D-033) |
 
 ## 5. Typography
 
 | Role | Family | Notes |
 |---|---|---|
-| Display (headings, names, times) | **Anek Bangla** (variable weight and width) | One family for both Bengali and Latin headings. The clinic name uses a slightly wider width for presence. |
-| Body | **Hind Siliguri** (400, 500, 600) | Clear Bengali for long reading. Its Latin is also good. |
+| Latin display and body | **Geist** | Headline weight 500, tracking −0.045em, leading 0.95 |
+| Bengali | **Anek Bangla** (headings) and **Hind Siliguri** (body) | Used automatically for Bengali glyphs. Bengali headlines get leading 1.2 and no negative tracking. |
 
-- Body text is 17px with a line height of 1.65. Bengali needs more height for its vowel signs, so Bengali headings get a looser line height than Latin ones.
-- Headings use `text-wrap: balance`, and times and numbers use tabular figures.
+Body text is 17px. Never put letter-spacing on Bengali text, because it breaks the conjuncts.
 
-## 6. Layout (phones first)
+## 6. Layout
 
-- Design at a width of 360–400px, with 16px side gutters. At 768px and above, sections become two or three columns.
-- Touch targets are at least 44px. The sticky bottom bar on phones holds **Call**, **WhatsApp** and **Book**, and it respects the phone's safe area.
-- Use as few containers as possible: spacing and dividers instead of cards. Panels are used only for the "Today" box and the doctor profiles, and are never nested.
+- **Navbar:** floating and inset. Logo on the left, 3–4 links in the centre, then phone (on wide screens), the language switch, and a "Book appointment" pill with a lime arrow. Transparent over the hero; white with a shadow after scrolling. Phones show the logo, the language switch and a white menu button.
+- **Navbar on narrow phones (D-036):** below 400px the logo is a little smaller and never wraps, and the language switch drops its icon but keeps its label. Everything stays on one line down to 300px.
+- **Phone bottom bar (D-036):** slides up once the hero's buttons scroll away, and steps aside while the booking card reaches the bottom quarter of the screen, so it never covers the card's Send button.
+- **Phone menu (D-028):** the navbar never moves. The menu button turns into a close button in the same spot, and a full-screen white menu drops down from the top behind the bar: large section links, then an inset clinic-blue panel ("Book your serial") with one-tap booking for each doctor, Call, WhatsApp and Directions, and the owner.
+- **Hero:**
+  - On phones: headline (badge beside it), doctors' avatars, one line of explanation, Call and Directions, then the booking card.
+  - On desktop: text on the left, the booking card on the right.
+- **Doctors (D-030):** one card per doctor. The top is a clinic-blue portrait panel: the doctor's photo once supplied, until then their initials in large lime type with a faint medical plus. Below: name, qualification chip (MBBS), past hospitals, timings or "Call the clinic for timings", and a Book pill. Stacked on phones, two across on wider screens.
+- **Contact (D-029):** one bordered card. Details (phone, WhatsApp, owner, then address and hours once known) are rows with dividers and the Directions and Call buttons at the bottom; the map fills the other half at the same height. On phones the map sits below the details inside the same card.
+- **Footer (D-027, D-029):** an inset clinic-blue panel matching the hero. On phones and tablets: brand, tagline and owner across the top, Clinic beside Doctors, then Contact at full width so the email never breaks. Four columns on wide screens.
+- **Lab tests (D-032, D-034):** an inset mist panel.
+  - Header: a "Partner lab: Thyrocare" pill, the heading and a **search box**. People usually arrive knowing the test their doctor named.
+  - Health-concern filter chips wrap onto as many lines as they need, so every option is always visible. Nothing scrolls sideways (D-035).
+  - A bento grid where every test is visible at once:
+    - a clinic-blue full body checkup tile with the lab photo, a lime tag, coverage pills and "Ask about packages";
+    - one white tile per concern, with a tinted icon badge (amber, blue or green from the palette) and its tests as pills;
+    - a lime "Don't see your test?" tile with WhatsApp and Call.
+  - Each tile always has one test picked (the first, by default) and its explanation shown underneath. Tapping another pill swaps the text in place. All of a tile's explanations share one spot and only the picked one is visible, so the tile is as tall as its longest explanation and **nothing on the page moves when a pill is tapped** (D-035).
+  - A search with no match turns into "Ask about '…'" on WhatsApp with the typed name.
+  - Three columns on desktop (the blue tile spans two rows), two on tablets, one on phones.
+- **Sections:** doctors, "How booking works" (on a photo), lab tests, services (once real), contact with the map, then the footer.
 
-## 7. Motion (D-021)
+## 7. Motion
 
-The motion is fast, quiet and done in CSS only, with no animation library. Every item has a reduced-motion version: it appears straight away, with no movement.
+| Where | What | Timing |
+|---|---|---|
+| Hero | Text rises in, staggered. The photo settles from a slight zoom. | 700ms; 1.8s |
+| Badge | The ring of text turns | 14s per turn, linear |
+| Nav | Background and shadow fade in on scroll; the active link underline grows | 300ms |
+| Phone menu | Drops down from the top behind the fixed navbar; the menu icon turns into a close icon; links rise one by one. Closing is faster. | 520ms open, 300ms close; 45ms stagger |
+| Lab tests | Tiles settle in, 40ms apart, when the filter changes; the explanation settles in when a pill is tapped; the lab photo zooms slightly on hover | 240ms |
+| Doctor cards | Card lifts on hover; the faint plus in the portrait panel turns a quarter; the Book arrow turns 45° | 300ms; 700ms; 300ms |
+| Booking card | Selected states, success state settles in | 150–240ms |
+| Buttons | Press shrinks to 97%; the arrow turns 45° on hover | 120ms; 300ms |
 
-| Where | What | Why | Timing |
-|---|---|---|---|
-| Hero | The lotus draws its petals, then fills. The heading, line and buttons rise into place. | The one authored moment | Lotus about 1.6s; text 400–600ms, staggered |
-| "Today" box | A soft pulse on the dot of a doctor who is in now | Shows a live status at a glance | 2s loop |
-| Day picker | A pill slides to the chosen day, and that day's list rises in | Shows the change of state | 250ms / 200ms |
-| Buttons | Press shrinks to 97% | Confirms the tap | 120ms |
-| Bottom bar | Slides up once the hero's buttons scroll away | Keeps the actions in reach | 250ms |
-| Doctor profile (desktop) | Lifts slightly on hover | Shows it can be tapped | 200ms |
-
-Easing is `cubic-bezier(0.16, 1, 0.3, 1)`, with no bounce. There are no scroll-reveal effects on every section.
+Easing is `cubic-bezier(0.16, 1, 0.3, 1)`. Under reduced motion, nothing moves: no spin, rise, zoom or slide.
 
 ## 8. Copy voice
 
-- Short and warm, with plain verbs. "Book a serial", not "Submit".
-- Bengali is written the way it is spoken locally, not as a stiff translation.
-- Be honest about the process: "Reception confirms your serial and time." Never "Booking confirmed" for a request.
+Short and plain, with a verb on every button ("Send request on WhatsApp"). Be honest about the process: "Reception confirms your serial", never "Booked!".
 
-## 9. Refuse (Impeccable's list, applied here)
+## 9. What research says about booking pages (applied here)
 
+- Put a prominent booking entry point on the homepage, and keep a booking action in the header. → Hero card, nav pill, phone bottom bar.
+- Use as few steps as possible and short action labels. → Four fields, one button.
+- Tap-to-call on mobile. → Hero, nav, bottom bar.
+- Trust signals: credentials, reviews, clear cost. → Add them when the clinic supplies **real** ones. Never invent them.
+- Speed and accessibility matter. → Static pages, optimised images, contrast checked.
+
+Sources: [Proweaver](https://www.proweaver.com/amplify-healthcare-website-ux-for-easy-scheduling), [Solution21](https://www.solution21.com/blog-digital-patient-experience-how-modern-website-ux-drives-bookings-and-patient-retention), [Designerly](https://designerly.com/10-health-care-web-design-practices-for-the-telemedicine-age/). These are vendor blogs, so treat them as guidance, not evidence.
+
+## 10. Refuse
+
+- Decorative motifs that don't relate to healthcare (the lotus was dropped)
+- Invented statistics or reviews
+- Stock photos where a doctor's face is the subject
 - Grids of identical icon cards
-- Small labels above headings
-- Gradient text, decorative glass or blur
-- Emoji as icons (Lucide only)
-- A stock photo of a smiling doctor
-- Healthcare blue chosen by habit
-- Scroll animations on every section
+- Gradient text
+- Emoji used as icons
 
-## 10. Checks before any screen is called done
+## 11. Checks before any screen is called done
 
-- Text contrast is at least 4.5:1, focus rings are visible, and every control is labelled.
-- It works at 360px and 1440px, in both English **and Bengali**, because Bengali text runs longer and taller.
-- With reduced motion turned on, nothing moves and nothing is hidden.
-- On a mid-range phone over 4G, the main content appears within 2.5 seconds (LCP ≤ 2.5s) and nothing jumps around as it loads (CLS < 0.1).
-- The screen has been checked by eye in a real browser screenshot, at phone and desktop sizes.
+Mobile (D-036). Most visitors use phones, so these are checked in a real browser engine, Chromium (Android) and WebKit (iPhone), on phone profiles from 320px to 430px in both languages:
+
+- No sideways scrolling, and no element is cut off or squeezed. Check 320px especially.
+- Tap targets are at least 44px tall. Stacked text links are at least 40px tall, with no gap between them.
+- Nothing on the page moves when something is tapped. Space is reserved up front.
+- The Back button closes any open overlay, without reloading the page or losing the scroll position.
+- Fixed bars never cover a form's fields or buttons.
+- Overlays still reach their last item in landscape (360px tall) and at 130% text size.
+- The logo and the navbar stay on one line.
+
+Everywhere:
+
+- Contrast is at least 4.5:1 and focus rings are visible.
+- No sideways scrolling at 360–390px.
+- Checked in English **and** Bengali, at 390px and 1440px.
+- With reduced motion turned on, nothing moves.
+- Real browser screenshots have been reviewed.
+- Every form has been run end to end: errors, success, and the WhatsApp text it produces.
