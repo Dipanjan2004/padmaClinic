@@ -5,6 +5,7 @@ import { bookPath, dictionary, directionsLink, homePath, pick, whatsappLink, typ
 import { BookingSteps } from "./components/BookingSteps";
 import { ContactSection } from "./components/ContactSection";
 import { DoctorList } from "./components/DoctorList";
+import { FaqSection } from "./components/FaqSection";
 import { Hero } from "./components/Hero";
 import { MobileActionBar } from "./components/MobileActionBar";
 import { ServiceList } from "./components/ServiceList";
@@ -28,7 +29,7 @@ export function homeMetadata(lang: Lang, data: PublicSiteData): Metadata {
 }
 
 export async function HomePage({ lang }: { lang: Lang }) {
-  const { clinic, doctors, services, labTests } = await getPublicSiteData();
+  const { clinic, doctors, services, labTests, faqs } = await getPublicSiteData();
   const t = dictionary(lang);
   const hasTimings = doctors.some((d) => d.sessions.length > 0);
   const whatsappHref = clinic.whatsapp ? whatsappLink(clinic.whatsapp, t.whatsappMessage) : null;
@@ -41,6 +42,7 @@ export async function HomePage({ lang }: { lang: Lang }) {
     { id: "booking", label: t.nav.booking },
     ...(labTests ? [{ id: "lab-tests", label: t.nav.labTests }] : []),
     ...(services.length > 0 ? [{ id: "services", label: t.nav.services }] : []),
+    ...(faqs.length > 0 ? [{ id: "faq", label: t.nav.faq }] : []),
     { id: "contact", label: t.nav.contact },
   ];
 
@@ -72,6 +74,7 @@ export async function HomePage({ lang }: { lang: Lang }) {
           <LabTests lang={lang} labTests={labTests} whatsapp={clinic.whatsapp} phone={clinic.phone} />
         )}
         <ServiceList lang={lang} services={services} />
+        <FaqSection lang={lang} faqs={faqs} phone={clinic.phone} whatsapp={clinic.whatsapp} />
         <ContactSection lang={lang} clinic={clinic} />
       </main>
       <SiteFooter lang={lang} clinic={clinic} doctors={doctors} links={links} />

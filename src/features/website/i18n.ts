@@ -13,6 +13,7 @@ const en = {
     doctors: "Doctors",
     booking: "How to book",
     labTests: "Lab tests",
+    faq: "FAQ",
     services: "Services",
     contact: "Contact",
     menu: "Menu",
@@ -82,8 +83,8 @@ const en = {
   },
   doctors: {
     title: "Our doctors",
-    days: "Visiting days",
     visits: (days: string) => `Visits on ${days}`,
+    intro: "Choose who you'd like to see. Reception confirms your serial and the time.",
     callForTimings: "Call the clinic for timings",
     workedAt: (place: string) => `Worked at ${place}`,
   },
@@ -105,12 +106,9 @@ const en = {
     search: "Search a test",
     searchHint: "Search a test, like CBC",
     clear: "Clear search",
-    filters: "Filter by health concern",
-    all: "All tests",
-    count: (n: number) => (n === 1 ? "1 test" : `${n} tests`),
     found: (n: number) => (n === 1 ? "1 test found" : `${n} tests found`),
-    tapHint: "Tap a test to see what it checks.",
     checkupTag: "Full body checkup",
+    covers: (list: string) => `Covers ${list}.`,
     askCheckup: "Ask about packages",
     checkupMessage: "Hello, I'd like to know about the full body checkup packages.",
     moreTitle: "Don't see your test?",
@@ -120,6 +118,12 @@ const en = {
     noMatch: (query: string) => `“${query}” isn't in this list, but we may still do it.`,
     askAbout: (query: string) => `Ask about “${query}”`,
     askQueryMessage: (query: string) => `Hello, do you do the ${query} test?`,
+  },
+  faq: {
+    title: "Common questions",
+    intro: "Quick answers about booking, fees and lab tests.",
+    askTitle: "Still have a question?",
+    askBody: "Reception is happy to help. Call or send a WhatsApp message.",
   },
   services: { title: "Services" },
   contact: {
@@ -152,6 +156,7 @@ const bn: Dictionary = {
     doctors: "ডাক্তার",
     booking: "কীভাবে বুক করবেন",
     labTests: "ল্যাব টেস্ট",
+    faq: "প্রশ্নোত্তর",
     services: "পরিষেবা",
     contact: "যোগাযোগ",
     menu: "মেনু",
@@ -221,8 +226,8 @@ const bn: Dictionary = {
   },
   doctors: {
     title: "আমাদের ডাক্তারবাবুরা",
-    days: "বসার দিন",
     visits: (days: string) => `বসেন ${days}`,
+    intro: "কোন ডাক্তারবাবুকে দেখাবেন বেছে নিন। রিসেপশন সিরিয়াল আর সময় জানিয়ে দেবে।",
     callForTimings: "সময় জানতে ক্লিনিকে ফোন করুন",
     workedAt: (place: string) => `অভিজ্ঞতা: ${place}`,
   },
@@ -244,12 +249,9 @@ const bn: Dictionary = {
     search: "টেস্ট খুঁজুন",
     searchHint: "টেস্ট খুঁজুন, যেমন CBC",
     clear: "খোঁজা মুছুন",
-    filters: "শরীরের সমস্যা অনুযায়ী বাছুন",
-    all: "সব টেস্ট",
-    count: (n: number) => `${localDigits("bn", n)}টি পরীক্ষা`,
     found: (n: number) => `${localDigits("bn", n)}টি পরীক্ষা পাওয়া গেছে`,
-    tapHint: "কোন টেস্টে কী দেখা হয়, জানতে নামের ওপর চাপুন।",
     checkupTag: "ফুল বডি চেকআপ",
+    covers: (list: string) => `${list}, সব একসঙ্গে।`,
     askCheckup: "প্যাকেজের খোঁজ নিন",
     checkupMessage: "নমস্কার, ফুল বডি চেকআপ প্যাকেজ নিয়ে জানতে চাই।",
     moreTitle: "আপনার টেস্ট এখানে নেই?",
@@ -259,6 +261,12 @@ const bn: Dictionary = {
     noMatch: (query: string) => `“${query}” এই তালিকায় নেই, তবে হয়তো আমরা করি।`,
     askAbout: (query: string) => `“${query}” নিয়ে জিজ্ঞেস করুন`,
     askQueryMessage: (query: string) => `নমস্কার, আপনাদের এখানে কি ${query} টেস্ট হয়?`,
+  },
+  faq: {
+    title: "যা অনেকে জানতে চান",
+    intro: "সিরিয়াল, ফি আর ল্যাব টেস্ট নিয়ে চটজলদি উত্তর।",
+    askTitle: "আর কিছু জানার আছে?",
+    askBody: "রিসেপশন সাহায্য করবে। ফোন করুন বা হোয়াটসঅ্যাপে লিখুন।",
   },
   services: { title: "পরিষেবা" },
   contact: {
@@ -345,14 +353,8 @@ const DAY_LONG: Record<Lang, string[]> = {
   bn: ["রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার", "শুক্রবার", "শনিবার"],
 };
 
-const DAY_LETTER: Record<Lang, string[]> = {
-  en: ["S", "M", "T", "W", "T", "F", "S"],
-  bn: ["র", "সো", "ম", "বু", "বৃ", "শু", "শ"],
-};
-
 export const dayShort = (lang: Lang, day: Weekday) => DAY_SHORT[lang][day];
 export const dayLong = (lang: Lang, day: Weekday) => DAY_LONG[lang][day];
-export const dayLetter = (lang: Lang, day: Weekday) => DAY_LETTER[lang][day];
 
 /** Bengali names the part of the day instead of using am/pm: সকাল, দুপুর, বিকেল, সন্ধ্যা, রাত. */
 function bengaliDayPart(hour: number): string {

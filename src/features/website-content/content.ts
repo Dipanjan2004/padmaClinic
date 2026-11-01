@@ -208,4 +208,66 @@ export const clinicContent: PublicSiteData = {
       },
     ],
   },
+  // Real patient questions, answered only from confirmed facts and rules (BR-01, BR-02, D-011, D-032). No fees or timings.
+  faqs: [
+    {
+      question: { en: "How do I book an appointment?", bn: "কীভাবে সিরিয়াল বুক করব?" },
+      answer: {
+        en: "Choose a doctor and a day in the form at the top of this page and send the request on WhatsApp, or call us. Reception then confirms your serial and the approximate time.",
+        bn: "এই পাতার ওপরের ফর্মে ডাক্তারবাবু আর দিন বেছে হোয়াটসঅ্যাপে অনুরোধ পাঠান, অথবা ফোন করুন। তারপর রিসেপশন আপনার সিরিয়াল আর আনুমানিক সময় জানিয়ে দেবে।",
+      },
+    },
+    {
+      question: {
+        en: "Is my appointment confirmed once I send the request?",
+        bn: "অনুরোধ পাঠালেই কি সিরিয়াল পাকা হয়ে যায়?",
+      },
+      answer: {
+        en: "Not yet. The form only asks for an appointment. It is confirmed when reception replies with your serial number.",
+        bn: "এখনই নয়। ফর্ম পাঠালে শুধু অনুরোধ যায়। রিসেপশন সিরিয়াল নম্বর জানালে তবেই সিরিয়াল পাকা হয়।",
+      },
+    },
+    {
+      question: { en: "Why is the time only approximate?", bn: "সময় কেন আনুমানিক?" },
+      answer: {
+        en: "Patients are seen in serial order, and some take longer than others. If the doctor is running late, we let you know, so you don't wait longer than you need to.",
+        bn: "রোগী দেখা হয় সিরিয়াল অনুযায়ী, আর কারও কারও বেশি সময় লাগে। ডাক্তারবাবুর দেরি হলে আমরা জানিয়ে দিই, যাতে অযথা অপেক্ষা করতে না হয়।",
+      },
+    },
+    {
+      question: { en: "When do I pay the consultation fee?", bn: "ফি কখন দিতে হয়?" },
+      answer: {
+        en: "At reception, before you see the doctor. Call us if you'd like to know the fee.",
+        bn: "ডাক্তার দেখানোর আগে, রিসেপশনে। ফি জানতে ফোন করুন।",
+      },
+    },
+    {
+      question: { en: "What are the doctors' timings?", bn: "ডাক্তারবাবুরা কখন বসেন?" },
+      answer: {
+        en: "Timings can change from day to day, so please call the clinic. Reception will tell you when each doctor is in.",
+        bn: "সময় দিনে দিনে বদলাতে পারে, তাই ক্লিনিকে ফোন করুন। কোন ডাক্তারবাবু কখন বসেন, রিসেপশন জানিয়ে দেবে।",
+      },
+    },
+    {
+      question: { en: "Can I book for a family member?", bn: "বাড়ির কারও জন্য সিরিয়াল বুক করা যায়?" },
+      answer: {
+        en: "Yes. Enter the patient's name in the form with your own mobile number, and we'll confirm with you.",
+        bn: "হ্যাঁ। ফর্মে রোগীর নাম আর আপনার মোবাইল নম্বর দিন, আমরা আপনার সঙ্গেই কথা বলব।",
+      },
+    },
+    {
+      question: { en: "Can I get lab tests done?", bn: "এখানে কি ল্যাব টেস্ট করানো যায়?" },
+      answer: {
+        en: "Yes. Blood, urine and full body checkup tests are done with Thyrocare, our partner lab. Some tests need an empty stomach, so ask us before you come.",
+        bn: "হ্যাঁ। আমাদের পার্টনার ল্যাব থাইরোকেয়ারের সঙ্গে রক্ত, প্রস্রাব আর ফুল বডি চেকআপের পরীক্ষা হয়। কিছু পরীক্ষার আগে খালি পেটে থাকতে হয়, তাই আসার আগে জেনে নিন।",
+      },
+    },
+    {
+      question: { en: "Is there a pharmacy?", bn: "ওষুধের দোকান আছে?" },
+      answer: {
+        en: "Yes. Our associated pharmacy is Jatindra Mohan Medico.",
+        bn: "হ্যাঁ। আমাদের সহযোগী ওষুধের দোকান যতীন্দ্র মোহন মেডিকো।",
+      },
+    },
+  ],
 };

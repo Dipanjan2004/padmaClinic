@@ -50,9 +50,13 @@ export type LabCheckup = { name: Localized; about: Localized; covers: Localized[
 /** Tests done through the clinic's partner lab. Prices and report times are not shown until the owner supplies them. */
 export type PublicLabTests = { partner: Localized; checkup: LabCheckup | null; categories: LabCategory[] };
 
+/** A question patients ask, answered only with facts the clinic has confirmed. */
+export type PublicFaq = { question: Localized; answer: Localized };
+
 export type PublicSiteData = {
   clinic: ClinicInfo;
   doctors: PublicDoctor[];
   services: PublicService[];
   labTests: PublicLabTests | null;
+  faqs: PublicFaq[];
 };
