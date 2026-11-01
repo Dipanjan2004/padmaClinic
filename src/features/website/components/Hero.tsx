@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ArrowRight, Navigation, Phone } from "lucide-react";
 import type { CSSProperties } from "react";
-import heroImage from "@/assets/images/clinic-hero.jpg";
+import heroImage from "@/assets/images/hero-booking-home.jpg";
 import type { ClinicInfo, PublicDoctor } from "@/features/website-content/types";
 import { bookPath, dictionary, directionsLink, formatPhone, pick, type Lang } from "../i18n";
 import { Avatar } from "./Avatar";
@@ -12,7 +12,8 @@ const delay = (ms: number) => ({ "--delay": `${ms}ms` }) as CSSProperties;
 
 /**
  * An inset blue panel that says plainly what the site is for, with the booking
- * card as its visual (D-025). The clinic photo sits behind it, toned blue.
+ * card as its visual (D-025). Behind it, toned blue: an elderly woman booking from
+ * home on her laptop, the person this page is for (D-046).
  */
 export function Hero({ lang, clinic, doctors }: { lang: Lang; clinic: ClinicInfo; doctors: PublicDoctor[] }) {
   const t = dictionary(lang);
@@ -34,11 +35,11 @@ export function Hero({ lang, clinic, doctors }: { lang: Lang; clinic: ClinicInfo
           fill
           priority
           sizes="100vw"
-          className="hero-zoom -z-20 object-cover object-[60%_70%] opacity-35 mix-blend-luminosity md:object-[80%_62%]"
+          className="hero-zoom -z-20 object-cover object-[38%_25%] opacity-45 mix-blend-luminosity md:object-[30%_30%] md:opacity-50"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-brand/65 md:bg-transparent md:bg-[linear-gradient(100deg,var(--color-brand)_34%,rgb(36_99_166/0.55)_70%,rgb(36_99_166/0.2)_100%)]"
+          className="absolute inset-0 -z-10 bg-brand/60 md:bg-transparent md:bg-[linear-gradient(100deg,var(--color-brand)_22%,rgb(36_99_166/0.6)_48%,rgb(36_99_166/0.35)_100%)]"
         />
 
         <div className="mx-auto grid max-w-6xl gap-12 px-4 pt-28 pb-4 min-[400px]:px-5 min-[400px]:pb-5 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:items-center md:gap-10 md:px-8 md:pt-36 md:pb-16 lg:gap-16">
