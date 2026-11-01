@@ -294,3 +294,43 @@ Status key:
 ### D-041: No new branches unless asked
 - 2026-11-01 · Source: user · ✅ Decided
 - Commit on the current branch (`main`). Create a branch only when the user asks for one.
+
+### D-042: Lab tests as a printed-style test menu
+- 2026-11-01 · Source: user · ✅ Decided. 🟡 The design is Claude's. Supersedes the bento layout in D-034 and D-035.
+- **What the user said:** the bento had too much information here and there, and then too much blank space inside the tiles. Research real designs and make it look professional, not AI-generated.
+- **Research:** good lab redesigns show a category's tests as a scannable list or table rather than a card grid.
+- **The new design:**
+  - The full body checkup card sits beside one white "test menu" panel, styled like the menus labs hand out.
+  - Categories flow in balanced columns at their natural height, so nothing is half empty.
+  - Test names are a plain list.
+  - Per-test explanations appear only in search results, where they help.
+  - The filter chips, the tap hint, the per-tile pills and the counts are gone.
+  - Search and the WhatsApp fallback stay.
+
+### D-043: Doctors as chamber nameplates
+- 2026-11-01 · Source: user · ✅ Decided. 🟡 The design is Claude's. Supersedes the card look in D-030.
+- **What the user said:** the doctor cards were boring, then a profile-card version looked AI-made.
+- Each doctor is now a typographic row, like the nameplate outside a chamber in Bengal: the name large in English and Bengali, the degree and facts in plain text, one Book pill and a quiet "Call for timings" link.
+- No placeholder portraits and no icon chips. A real photo appears once the clinic sends one.
+
+### D-044: An FAQ section
+- 2026-11-01 · Source: user · ✅ Decided. 🟡 The questions are Claude's.
+- Eight questions, in English and Bengali, stored with the clinic content: how to book, whether a request is confirmed, why times are approximate, when the fee is paid, the doctors' timings, booking for a family member, lab tests, and the pharmacy.
+- Every answer uses only confirmed facts and rules (BR-01, BR-02, D-011, D-032, D-004). There are no fees or timings.
+- Design: plain rows with thin dividers and a chevron, using native `<details>`, with Call and WhatsApp beside them. An "FAQ" link is in the navbar and footer.
+
+### D-045: FAQ accordion: one open at a time, animated; timings as plain text on doctors
+- 2026-11-01 · Source: user · ✅ Decided
+- **What the user said:**
+  - When one FAQ opens, the other should close, with a smooth transition.
+  - Make the FAQ look more professional.
+  - On phones, "Call for timings" looked boring; show it as plain text.
+- The FAQ is now a single-open accordion with a 300ms height and opacity animation. It is built on buttons rather than native `<details>`, because those can't animate reliably on iPhones yet.
+- The open card lifts and its plus turns into a ×. There is a clinic-blue "Still have a question?" card: under the heading on desktop, last on phones.
+- Doctors: timings now read "Call the clinic for timings" as plain text with the other facts. Each doctor has one Book button.
+
+### D-046: A meaningful hero photo, and the medical emblem behind the doctors
+- 2026-11-01 · Source: user · ✅ Decided. 🟡 The choices are Claude's.
+- **What the user said:** use a doctor's symbol as a watermark in the doctors section, but only if it looks professional. Choose a better, more meaningful background image for the hero.
+- **Hero:** an elderly Indian woman in a saree booking from home on her laptop (Pexels 19485860). She is the person this page is for, and no stock doctor's face appears. She is placed in the gap between the headline and the booking card, looking towards it. Blue luminosity tone; text contrast checked. The stethoscope photo (`clinic-hero.jpg`) was removed.
+- **Doctors:** a quiet watermark of the **Rod of Asclepius**: one serpent on a staff, the correct emblem of medicine and the one in the Indian Medical Association's logo, rather than the two-serpent caduceus. It was drawn for this site, so no licence applies. It sits at 7% opacity, faded as one layer so the crossings don't darken.

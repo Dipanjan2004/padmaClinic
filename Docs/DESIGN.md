@@ -53,7 +53,7 @@ Claude reads this before touching any screen.
 
 | File | Unsplash photo | Where it is used |
 |---|---|---|
-| `src/assets/images/clinic-hero.jpg` | njrDE70M2VI: stethoscope and BP gauge | Behind the hero, blue luminosity blend |
+| `src/assets/images/hero-booking-home.jpg` | Pexels 19485860 (Click'r Sharad Patil): an elderly Indian woman in a saree booking from home on her laptop | Behind the hero, blue luminosity blend. She shows between the headline and the booking card, looking towards it (D-046) |
 | `src/assets/images/lab-tubes.jpg` | Pexels 6622519 (Charlie-Helen Robinson): barcoded sample tubes in a rack | Full body checkup tile in Lab tests, blue luminosity blend (D-034) |
 | `src/assets/images/clinic-consult.jpg` | Pexels 18870282 (World Sikh Organization): an Indian doctor examining an elderly Sikh patient with a stethoscope, cropped to remove another clinic's poster | Background of "How booking works" (D-033) |
 
@@ -75,20 +75,23 @@ Body text is 17px. Never put letter-spacing on Bengali text, because it breaks t
 - **Hero:**
   - On phones: headline (badge beside it), doctors' avatars, one line of explanation, Call and Directions, then the booking card.
   - On desktop: text on the left, the booking card on the right.
-- **Doctors (D-030):** one card per doctor. The top is a clinic-blue portrait panel: the doctor's photo once supplied, until then their initials in large lime type with a faint medical plus. Below: name, qualification chip (MBBS), past hospitals, timings or "Call the clinic for timings", and a Book pill. Stacked on phones, two across on wider screens.
+- **Doctors (D-043):** a list of chamber nameplates, the way doctors in Bengal present themselves. There are no cards, no placeholder portraits and no icon chips. Each row has the name set large with the Bengali name beneath it (the English name on the Bengali page), the degree and facts in plain text, a plain-text line "Call the clinic for timings" until timings are known, and one Book pill. A round photo appears beside the name once the clinic supplies one. Rows are separated by thin rules; the intro sits to the right of the heading on desktop. Behind the list, a quiet watermark of the **Rod of Asclepius** (the medical emblem, drawn for this site) at 7% opacity, faded as one layer (D-046).
 - **Contact (D-029):** one bordered card. Details (phone, WhatsApp, owner, then address and hours once known) are rows with dividers and the Directions and Call buttons at the bottom; the map fills the other half at the same height. On phones the map sits below the details inside the same card.
 - **Footer (D-027, D-029):** an inset clinic-blue panel matching the hero. On phones and tablets: brand, tagline and owner across the top, Clinic beside Doctors, then Contact at full width so the email never breaks. Four columns on wide screens.
-- **Lab tests (D-032, D-034):** an inset mist panel.
+- **Lab tests (D-032, D-042):** an inset mist panel.
   - Header: a "Partner lab: Thyrocare" pill, the heading and a **search box**. People usually arrive knowing the test their doctor named.
-  - Health-concern filter chips wrap onto as many lines as they need, so every option is always visible. Nothing scrolls sideways (D-035).
-  - A bento grid where every test is visible at once:
-    - a clinic-blue full body checkup tile with the lab photo, a lime tag, coverage pills and "Ask about packages";
-    - one white tile per concern, with a tinted icon badge (amber, blue or green from the palette) and its tests as pills;
-    - a lime "Don't see your test?" tile with WhatsApp and Call.
-  - Each tile always has one test picked (the first, by default) and its explanation shown underneath. Tapping another pill swaps the text in place. All of a tile's explanations share one spot and only the picked one is visible, so the tile is as tall as its longest explanation and **nothing on the page moves when a pill is tapped** (D-035).
-  - A search with no match turns into "Ask about '…'" on WhatsApp with the typed name.
-  - Three columns on desktop (the blue tile spans two rows), two on tablets, one on phones.
-- **Sections:** doctors, "How booking works" (on a photo), lab tests, services (once real), contact with the map, then the footer.
+  - Browsing: the full body checkup card (lab photo, lime tag, one sentence on what it covers, "Ask about packages") sits beside a **test menu**, a single white panel styled like the printed test menus labs hand out.
+    - Categories flow in balanced columns at their natural height, separated by a thin rule, so no box is ever left half empty.
+    - Each category has a small tinted icon and a plain list of test names, with no pills or per-test explanations.
+    - A footer row reads "Don't see your test?" with WhatsApp and Call.
+  - Searching swaps the menu for a results list: each match with its group and what it checks. No match offers "Ask about '…'" on WhatsApp with the typed name.
+  - Two columns on desktop (card, then menu), the card over the menu on tablets, and everything stacked on phones.
+- **FAQ (D-044, D-045):** each question is a card; the whole card is the button (64px).
+  - **One answer open at a time.** Opening another closes the first. The answer slides open by animating its grid row from 0 to full height plus opacity, over 300ms. The open card lifts with a soft shadow, and its plus turns into a ×.
+  - Closed answers are inert, so screen readers and the keyboard skip them.
+  - A clinic-blue "Still have a question?" card shows the phone number large, with Call and WhatsApp. On desktop it sits under the heading; on phones it comes after the questions.
+  - Answers use only confirmed facts: no fees, no timings.
+- **Sections:** doctors, "How booking works" (on a photo), lab tests, services (once real), FAQ, contact with the map, then the footer.
 
 ## 7. Motion
 
