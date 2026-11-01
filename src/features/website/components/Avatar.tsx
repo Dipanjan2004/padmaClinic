@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export function initials(name: string): string {
+function initials(name: string): string {
   return name
     .replace(/^Dr\.?\s*/i, "")
     .split(/[\s.]+/)
